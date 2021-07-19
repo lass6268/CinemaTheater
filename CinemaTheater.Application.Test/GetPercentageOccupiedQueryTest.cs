@@ -1,4 +1,5 @@
 ﻿using CinemaTheater.Application.Query;
+using CinemaTheater.Application.Test.Helpers;
 using CinemaTheater.Domain.Entities;
 using Shouldly;
 using System;
@@ -15,20 +16,13 @@ namespace CinemaTheater.Application.Test
         private static ICollection<Seat> seats { get; set; }
         public GetPercentageOccupiedQueryTest()
         {
-            seats = new List<Seat>()
-            {
-                new Seat(1,1,10),
-                new Seat(1,2,10),
-                new Seat(1,3,10)
-                {Taken = true },
-                new Seat(1,4,10)
-            };
+            seats = SeatList.GetSeats();
         }
         [Fact]
         public void PercentageOccupiedTest()
         {
             var percentageOccupied = new GetPercentageOccupiedQuery().Handle(seats);
-            percentageOccupied.ShouldBe(25);
+            percentageOccupied.ShouldBe(40);
         }
     }
 }
