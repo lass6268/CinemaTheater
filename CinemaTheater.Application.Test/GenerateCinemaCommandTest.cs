@@ -33,6 +33,7 @@ namespace CinemaTheater.Application.Test
             cinema.ShouldNotBeNull();
             cinema.Seats[0].Price.ShouldBe(12);
             cinema.Seats[49].Price.ShouldBe(12);
+            cinema.Seats[50].Price.ShouldBe(10);
         }
         [Fact]
         public void CreateCinemaUnder49CapacityTest()
@@ -41,6 +42,18 @@ namespace CinemaTheater.Application.Test
             cinema.ShouldNotBeNull();
             cinema.Seats[0].Price.ShouldBe(10);
             cinema.Seats[49].Price.ShouldBe(10);
+        }
+        [Fact]
+        public void TryCreateCinemaWithWrongRowInputTest()
+        {
+            var cinema = new GenerateCinemaCommand();
+            Should.Throw<ArgumentOutOfRangeException>(() => cinema.Handle(0, 10)).Message.ShouldBe("Parameter less then 1 (Parameter 'numberOfRows')");
+        }
+        [Fact]
+        public void TryCreateCinemaWithWrongSeatInputTest()
+        {
+            var cinema = new GenerateCinemaCommand();
+            Should.Throw<ArgumentOutOfRangeException>(() => cinema.Handle(10, 0)).Message.ShouldBe("Parameter less then 1 (Parameter 'seatsPerRow')");
         }
     }
 }

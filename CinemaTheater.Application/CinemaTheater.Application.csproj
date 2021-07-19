@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CinemaTheater.Core\CinemaTheater.Core.csproj" />
+    <ProjectReference Include="..\CinemaTheater.Core\CinemaTheater.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModel\" />
   </ItemGroup>
 
 </Project>

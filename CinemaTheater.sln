@@ -7,11 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinemaTheater", "CinemaThea
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinemaTheater.Application", "CinemaTheater.Application\CinemaTheater.Application.csproj", "{C9D4845C-DCED-48B7-BBED-FBDA1720C2D8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinemaTheater.Core", "CinemaTheater.Core\CinemaTheater.Core.csproj", "{1F17A071-8A33-48DB-81DB-73D7A517E9D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinemaTheater.Domain", "CinemaTheater.Core\CinemaTheater.Domain.csproj", "{1F17A071-8A33-48DB-81DB-73D7A517E9D0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinemaTheater.Infrastructure", "CinemaTheater.Infrastructure\CinemaTheater.Infrastructure.csproj", "{97449806-A5AF-4229-A289-6D4531C55AFD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaTheater.Application.Test", "CinemaTheater.Application.Test\CinemaTheater.Application.Test.csproj", "{6733426F-5556-4238-B6F7-126DFA0A8C9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinemaTheater.Application.Test", "CinemaTheater.Application.Test\CinemaTheater.Application.Test.csproj", "{6733426F-5556-4238-B6F7-126DFA0A8C9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		{1F17A071-8A33-48DB-81DB-73D7A517E9D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F17A071-8A33-48DB-81DB-73D7A517E9D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F17A071-8A33-48DB-81DB-73D7A517E9D0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{97449806-A5AF-4229-A289-6D4531C55AFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97449806-A5AF-4229-A289-6D4531C55AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97449806-A5AF-4229-A289-6D4531C55AFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97449806-A5AF-4229-A289-6D4531C55AFD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6733426F-5556-4238-B6F7-126DFA0A8C9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6733426F-5556-4238-B6F7-126DFA0A8C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6733426F-5556-4238-B6F7-126DFA0A8C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU

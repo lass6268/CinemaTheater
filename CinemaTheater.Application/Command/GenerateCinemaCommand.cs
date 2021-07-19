@@ -1,4 +1,4 @@
-﻿using CinemaTheater.Core.Entities;
+﻿using CinemaTheater.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +11,14 @@ namespace CinemaTheater.Application.Command
     {
         public Cinema Handle(int numberOfRows, int seatsPerRow)
         {
+            if (numberOfRows <= 0)
+            {
+                throw new ArgumentOutOfRangeException("numberOfRows", "Parameter less then 1");
+            }
+            if (seatsPerRow <= 0)
+            {
+                throw new ArgumentOutOfRangeException("seatsPerRow", "Parameter less then 1");
+            }
             var seats = new List<Seat>();
             if (numberOfRows*seatsPerRow > 50)
             {

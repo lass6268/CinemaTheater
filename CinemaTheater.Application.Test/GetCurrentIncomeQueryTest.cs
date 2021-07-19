@@ -1,5 +1,5 @@
 ﻿using CinemaTheater.Application.Query;
-using CinemaTheater.Core.Entities;
+using CinemaTheater.Domain.Entities;
 using Shouldly;
 using System;
 using System.Collections.Generic;
@@ -27,7 +27,7 @@ namespace CinemaTheater.Application.Test
             };
         }
         [Fact]
-        public void PercentageOccupiedTest()
+        public void CurrentIncomeTest()
         {
             var currentIncome = new GetCurrentIncomeQuery().Handle(seats);
             currentIncome.ShouldBe(22);

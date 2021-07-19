@@ -1,6 +1,6 @@
 ﻿using CinemaTheater.Application.Command;
 using CinemaTheater.Application.Query;
-using CinemaTheater.Core.Entities;
+using CinemaTheater.Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,6 @@ namespace CinemaTheater
     {
         static void Main(string[] args)
         {
-
             Console.WriteLine("There is no cinema, please create one");
             var cinemaUI = new CinemaUI();
             int numberOfRowsInput = cinemaUI.GetInput("Please input number of rows",1,100);

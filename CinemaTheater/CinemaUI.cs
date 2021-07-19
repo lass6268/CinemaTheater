@@ -1,7 +1,7 @@
 ﻿using CinemaTheater.Application.Command;
 using CinemaTheater.Application.Interface;
 using CinemaTheater.Application.Query;
-using CinemaTheater.Core.Entities;
+using CinemaTheater.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +15,17 @@ namespace CinemaTheater
         public Dictionary<bool,char> TakenDict { get; set; }
         public StringBuilder stringBuilder { get; set; }
         public IMetric _getCurrentIncomeQuery { get; set; }
+        public IMetric _getPercentageOccupiedQuery { get; set; }
+        public IMetric _getPotentialTotalIncomeQuery { get; set; }
+        public IMetric _getPurchasedTicketNumbersQuery { get; set; }
+        public RegisterSeatCommand _registerSeatCommand { get; set; }
         public CinemaUI( )
         {
+            _getCurrentIncomeQuery = new GetCurrentIncomeQuery();
+            _getPercentageOccupiedQuery = new GetPercentageOccupiedQuery();
+            _getPotentialTotalIncomeQuery = new GetPotentialTotalIncomeQuery();
+            _getPurchasedTicketNumbersQuery = new GetPurchasedTicketNumbersQuery();
+            _registerSeatCommand = new RegisterSeatCommand();
             stringBuilder = new StringBuilder();
             TakenDict = new Dictionary<bool, char>() {
                 { true, 'R' },
@@ -27,7 +36,7 @@ namespace CinemaTheater
         {
             Console.Clear();
             stringBuilder.Clear();
-            var seatIndexs = 0;
+            var seatIndex = 0;
             var rowIndex = 1;
             stringBuilder.AppendLine("----Theater screen---- ");
             for (int row = 0; row < cinema.Rows; row++)
@@ -36,8 +45,8 @@ namespace CinemaTheater
                 stringBuilder.Append(rowIndex > 9 ? " " : "  ");
                 for (int i = 0; i < cinema.SeatsPerRow; i++)
                 {
-                    stringBuilder.Append("  " + TakenDict[cinema.Seats[seatIndexs].Taken]);
-                    seatIndexs++;
+                    stringBuilder.Append("  " + TakenDict[cinema.Seats[seatIndex].Taken]);
+                    seatIndex++;
                 }
                 stringBuilder.AppendLine();
                 rowIndex++;
@@ -59,9 +68,9 @@ namespace CinemaTheater
         private void ListMetrics(ICollection<Seat> seats)
         {
             Console.WriteLine($"Current income      : {_getCurrentIncomeQuery.Handle(seats)}");
-            Console.WriteLine($"Percentage occupied : {new GetPercentageOccupiedQuery().Handle(seats)}%");
-            Console.WriteLine($"Potential income    : {new GetPotentialTotalIncomeQuery().Handle(seats)}");
-            Console.WriteLine($"Purchased tickets   : {new GetPurchasedTicketNumbersQuery().Handle(seats)}");
+            Console.WriteLine($"Percentage occupied : {_getPercentageOccupiedQuery.Handle(seats)}%");
+            Console.WriteLine($"Potential income    : {_getPotentialTotalIncomeQuery.Handle(seats)}");
+            Console.WriteLine($"Purchased tickets   : {_getPurchasedTicketNumbersQuery.Handle(seats)}");
             Console.WriteLine();
         }
 
@@ -81,8 +90,7 @@ namespace CinemaTheater
                         int row = GetInput("Please enter row", seats.Min(s => s.Row), seats.Max(s => s.Row));
                         int seat = GetInput("Please enter seat",seats.Min(s => s.SeatNumber), seats.Max(s => s.SeatNumber));
                     
-                        // remove new statment
-                        seatReserved = new RegisterSeatCommand().Handle(row, seat, seats);
+                        seatReserved = _registerSeatCommand.Handle(row, seat, seats);
                         if (!seatReserved)
                         {
                             Console.WriteLine("Seat is already reserved, please try a different seat");

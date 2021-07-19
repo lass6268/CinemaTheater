@@ -1,5 +1,5 @@
 ﻿using CinemaTheater.Application.Command;
-using CinemaTheater.Core.Entities;
+using CinemaTheater.Domain.Entities;
 using Shouldly;
 using System;
 using System.Collections.Generic;
